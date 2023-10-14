@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-    grid-column: 4;
+    grid-column: 3;
     grid-row: 3;
     box-sizing: border-box;
     border: 2px solid none;
-    border-radius: 5px;
+    border-radius: 10px;
     background-color: rgba(250, 250, 250, 0.9);
     color: rgb(180, 180, 180);
     text-align: left;
@@ -15,7 +15,7 @@ const Div = styled.div`
         margin-left: 0;
     }
 
-    .airQuality {
+    .precipitation {
         color: rgb(0, 144, 180);
         font-weight: bold;
         font-size: 30px;
@@ -52,33 +52,32 @@ const Div = styled.div`
     }
 `
 
-export default function AirQuality({airquality}) {
-    let normalizedAQI = 72 - airquality / 25;
+export default function Precipitation({precipitation}) {
+    console.log(precipitation);
+    let normalizedPoP = 72 - precipitation / 8.33;
 
-    let airqualityText;
-    if(airquality >= 0 && airquality <= 50){
-        airqualityText = "Good";
-    } else if(airquality >= 51 && airquality <= 100){
-        airqualityText = "Fair";
-    } else if(airquality >= 101 && airquality <= 150){
-        airqualityText = "Moderate";
-    } else if(airquality >= 151 && airquality <= 200){
-        airqualityText = "Unhealthy";
-    } else if(airquality >= 201 && airquality <= 300){
-        airqualityText = "Very Unhealthy";
-    } else if(airquality >= 300){
-        airqualityText = "Hazardous";
+    let precipitationText;
+    if(precipitation >= 0 && precipitation <= 10){
+        precipitationText = "Very Slight Chance";
+    } else if(precipitation >= 11 && precipitation <= 20){
+        precipitationText = "Slight Chance";
+    } else if(precipitation >= 21 && precipitation <= 50){
+        precipitationText = "Chance";
+    } else if(precipitation >= 51 && precipitation <= 70){
+        precipitationText = "Likely";
+    } else if(precipitation >= 71 && precipitation <= 100){
+        precipitationText = "Definite";
     }
     return (
         <Div>
             <div className="izquierda">
-                <h6>AIR QUALITY</h6>
-                <p className="airQuality">{airquality}</p>
-                <p className="state">{airqualityText}</p>
+                <h6>PRECIPITATION PROBABILITY</h6>
+                <p className="precipitation">{precipitation}%</p>
+                <p className="state">{precipitationText}</p>
             </div>
             <div className="derecha">
                 <div className="barraGris">
-                    <div className="puntoDeslizable" style={{top: normalizedAQI + "%"}}></div>
+                    <div className="puntoDeslizable" style={{top: normalizedPoP + "%"}}></div>
                 </div>
             </div>
         </Div>

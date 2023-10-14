@@ -3,17 +3,22 @@ import Barometer from "./smallerComponents/Barometer";
 
 const Div = styled.div`
     grid-column: 1;
-    grid-row: 1 / 3;
+    grid-row: 1;
     box-sizing: border-box;
-    border: 2px solid none;
-    border-radius: 5px;
+    
     background-color: none;
     padding: 1em;
     color: #d9480f;
 
+    .barometer {
+        justify-self: center;
+    }
+
     .date {
+        align-self: end;
         color: white;
         font-size: 30px;
+
     }
 `
 
@@ -25,7 +30,7 @@ export default function Temperature({date, temperature}){
     let minutes = dateFormat.getMinutes();
     return (
         <Div>
-            <Barometer value={temperature} title=""/>
+            <Barometer className="barometer" value={temperature} title=""/>
             <div className="date">{day}, {hours}:{minutes}</div>
         </Div>
     )

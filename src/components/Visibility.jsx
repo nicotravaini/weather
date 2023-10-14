@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-    grid-column: 3;
+    grid-column: 2;
     grid-row: 3;
     box-sizing: border-box;
     border: 2px solid none;
@@ -28,6 +28,16 @@ const Div = styled.div`
 `
 
 export default function Visibility({visibility}){
+    let visibilityInWords;
+    if(visibility >= 0 && visibility <= 1){
+        visibilityInWords = "Fog";
+    } else if(visibility > 1 && visibility <= 2){
+        visibilityInWords = "Mist";
+    } else if(visibility > 2 && visibility <= 5){
+        visibilityInWords = "Haze";
+    } else if(visibilityInWords > 5){
+        visibilityInWords = "Average";
+    }
     
     let visibilitySlice = visibility.toString().slice(0, 2);
 
@@ -35,7 +45,7 @@ export default function Visibility({visibility}){
         <Div>
             <h6>VISIBILITY</h6>
             <p className="visibilityId">{visibilitySlice} <span>km</span></p>
-            <p className="state">Average</p>
+            <p className="state">{visibilityInWords}</p>
         </Div>
     )
 }

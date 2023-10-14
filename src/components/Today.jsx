@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-    grid-column: 2 / 5;
-    grid-row: 1 / 2;
     box-sizing: border-box;
     align-self: center;
     border: 2px solid none;
@@ -12,8 +10,8 @@ const Div = styled.div`
 
     .wrapper {
         display: grid;
-        grid-template-columns: 50px 320px 320px;
-        grid-template-rows: 50px 50px 30px;
+        grid-template-columns: 3% 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
     .laterales {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 2;
     box-sizing: border-box;
     border: 2px solid none;

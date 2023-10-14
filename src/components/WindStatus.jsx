@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-    grid-column: 3;
+    grid-column: 2;
     grid-row: 2;
     box-sizing: border-box;
     border: 2px solid none;
     border-radius: 5px;
     background-color: rgba(250, 250, 250, 0.9);
-
     color: rgb(180, 180, 180);
     text-align: left;
     padding-left: 10px;
