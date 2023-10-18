@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import ResponsiveGauge from "./smallerComponents/ResponsiveGauge";
 
 const Div = styled.div`
     grid-column: 1;
@@ -20,11 +21,13 @@ const Div = styled.div`
 `
 
 export default function UvIndex ({uvindex}) {
+    console.log(uvindex)
     return (
         <Div>
             <h6>UV INDEX</h6>
             <div className="prueba"></div>
             <p className="uvIndex">{uvindex}</p>
+            {/* <ResponsiveGauge value={uvindex}/> */}
         </Div>
     )
 }

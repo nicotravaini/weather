@@ -13,32 +13,31 @@ import Precipitation from './Precipitation';
 
 const Div = styled.div`
     display: grid;
-    grid-template-colums: 10% 90%;
-    grid-template-rows: 35% 75%;
+    grid-template-rows: 30% 20% 1fr;
+    grid-gap: 10px;
     box-sizing: border-box;
-    height: 600px;
-    max-width: 1000px;
-    max-height: 800px;
+    max-width: 800px;
     padding: 2%;
-    margin: 0 auto;
     background-image: linear-gradient(to right, rgb(0, 104, 156, 0.6) , rgb(0, 144, 196, 0.2));
     border: 2px solid blue;
 
     .item1 {
-        grid-column: 1;
-        grid-row: 1 / 3;
-        display: grid;
-        grid-template-rows: 80% 20%;
-        border: 2px solid red;
-    }
-
-    .item2 {
-        grid-column: 2;
         grid-row: 1;
         display: grid;
-        grid-template-rows: 25% 75%;
-        border: 2px solid yellow;
+        grid-template-columns: 80% 20%;
+        ${'' /* border: 2px solid red; */}
     }
+
+    
+
+    .item2 {
+        grid-row: 2;
+        display: grid;
+        grid-template-rows: 25% 75%;
+        ${'' /* border: 2px solid yellow; */}
+    }
+
+ 
 
     .today {
         grid-row: 1;
@@ -54,14 +53,15 @@ const Div = styled.div`
     }
 
     .item3 {
-        grid-column: 2;
-        grid-row: 2;
+        grid-row: 3;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 10% 130px 130px;
         grid-gap: 10px;
-        border: 2px solid orange;
+        ${'' /* border: 2px solid orange; */}
     }
+
+   
 
     .highlights {
         grid-columns: 1 / 4;
@@ -106,7 +106,7 @@ export default function Weather({ weatherdata }) {
             "low": weatherdata["daily"]["temperature_2m_min"][0]
         });
         setTemperature({
-            "date": weatherdata["current"]["time"],
+            "date": weatherdata?.current?.time,
             "temperature": weatherdata["current"]["temperature_2m"]
         })
     }, [])
@@ -120,7 +120,7 @@ export default function Weather({ weatherdata }) {
             <div className='item2'>
                 <div className='today'>Today</div>
                 <div className='compToday'>
-                <Today value={today} />
+                    <Today value={today} />
                 </div>
             </div>
             <div className='item3'>

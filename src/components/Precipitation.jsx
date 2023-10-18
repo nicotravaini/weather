@@ -75,11 +75,11 @@ export default function Precipitation({precipitation}) {
                 <p className="precipitation">{precipitation}%</p>
                 <p className="state">{precipitationText}</p>
             </div>
-            <div className="derecha">
+            {/* <div className="derecha">
                 <div className="barraGris">
                     <div className="puntoDeslizable" style={{top: normalizedPoP + "%"}}></div>
                 </div>
-            </div>
+            </div> */}
         </Div>
     )
 }

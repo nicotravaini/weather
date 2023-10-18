@@ -49,7 +49,7 @@ const Div = styled.div`
         background-color: rgb(210, 210, 210);
     }
 
-    .puntoDeslizable {
+    .puntoDeslizable { 
         height: 15px;
         width: 15px;
         border: 3px solid rgb(255, 110, 0, 0.6);
@@ -68,7 +68,7 @@ export default function Humidity({humidity}){
         humidityInWords = "High";
     }
 
-    let normalizedHumidity = 72 - humidity / 8.33;
+    let normalizedHumidity = 80 - humidity / 1.25;
 
     return (
         <Div>
@@ -79,9 +79,11 @@ export default function Humidity({humidity}){
         </div>
         <div className="derecha">
             <div className="barraGris">
-                <div className="puntoDeslizable" style={{top: normalizedHumidity + "%"}}></div>
+                <div className="puntoDeslizable"></div>
             </div>
         </div>
         </Div>
     )
 }
+
+// style={{height: normalizedHumidity + "%"}} ESTO IRIA DESPUES DEL CLASSNAME PUNTODESLIZABLE.

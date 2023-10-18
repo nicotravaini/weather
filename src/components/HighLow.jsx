@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 const Div = styled.div`
-    grid-column: 1;
-    grid-row: 2;
+    grid-column: 2;
     box-sizing: border-box;
     border: 2px solid none;
     border-radius: 5px;
@@ -10,9 +9,9 @@ const Div = styled.div`
     padding: 1em;
     color: white;
 
-    .highLow {
+    .container {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
     }
 
     .temperature {
@@ -23,7 +22,7 @@ const Div = styled.div`
     }
 
     .temperatureHigh {
-        border-right: 1px solid white;
+        border-bottom: 1px solid white;
     }
     
     .highLow {
@@ -31,20 +30,16 @@ const Div = styled.div`
         text-align: left;
         font-size: 12px;
     }
-
-    .high {
-        border-right: 1px solid white;
-    }
 `
 
 export default function HighLow({high, low}){
     return (
         <Div>
-            <div className="highLow">
+            <div className="container">
+                <div className="highLow">HIGH</div>
                 <div className="temperature temperatureHigh">{high}°c</div>
-                <div className="temperature">{low}°c</div>
-                <div className="highLow high">HIGH</div>
                 <div className="highLow">LOW</div>
+                <div className="temperature">{low}°c</div>  
             </div>
         </Div>
     )
