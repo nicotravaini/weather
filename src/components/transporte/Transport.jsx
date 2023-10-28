@@ -11,16 +11,19 @@ const Header = styled.div`
     align-items: center;
 
     #label{
-        font-family: 'Roboto', sans-serif;
-        color: white;
-        font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+      color: white;
+      font-weight: bold;
     }
     #LineasDeColectivos{
-        border-radius: 12px;
-        font-family: 'Roboto', sans-serif;
+      border-radius: 12px;
+      font-family: 'Roboto', sans-serif;
     }
 `
-
+const Footer = styled.footer`
+    height: 5vh; 
+    background-image: linear-gradient(to right, rgb(0, 144, 196, 0.2), rgb(0, 104, 156, 0.6));
+`
 export default function Transport() {
   const [selectedLine, setSelectedLine] = useState("12A a Barracas");
   const [transportData, setTransportData] = useState(dataTransporte);
@@ -89,6 +92,7 @@ export default function Transport() {
         </select>
       </Header>
       <Mapa transportdata={transportData} />
+      <Footer/>
     </div>
   )
 }

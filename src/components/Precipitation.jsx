@@ -3,16 +3,24 @@ import styled from "styled-components";
 const Div = styled.div`
     grid-column: 3;
     grid-row: 3;
+    display: grid;
     box-sizing: border-box;
     border: 2px solid none;
     border-radius: 10px;
     background-color: rgba(250, 250, 250, 0.9);
     color: rgb(180, 180, 180);
-    text-align: left;
-    padding-left: 10px;
+    padding: 10px;
 
     .izquierda {
-        margin-left: 0;
+        grid-column: 1;
+        display: grid;
+        justify-items: start;
+    }
+
+    .title {
+        padding-top: 15px;
+        font-size: 11px;
+        font-weight: bold;
     }
 
     .precipitation {
@@ -70,9 +78,9 @@ export default function Precipitation({precipitation}) {
     return (
         <Div>
             <div className="izquierda">
-                <h6>PRECIPITATION PROBABILITY</h6>
-                <p className="precipitation">{precipitation}%</p>
-                <p className="state">{precipitationText}</p>
+                <div className="title">PRECIPITATION PROBABILITY</div>
+                <div className="precipitation">{precipitation}%</div>
+                <div className="state">{precipitationText}</div>
             </div>
             {/* <div className="derecha">
                 <div className="barraGris">

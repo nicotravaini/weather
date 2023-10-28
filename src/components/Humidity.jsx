@@ -25,6 +25,12 @@ const Div = styled.div`
         font-size: 30px;
     }
 
+    .title {
+        padding-top: 15px;
+        font-size: 11px;
+        font-weight: bold;
+    }
+
     span {
         font-size: 12px;
     }
@@ -73,7 +79,7 @@ export default function Humidity({humidity}){
     return (
         <Div>
         <div className="izquierda">
-            <div>HUMIDITY</div>
+            <div className="title">HUMIDITY</div>
             <div className="humidity">{humidity} <span>%</span></div>
             <div className="state">{humidityInWords}</div>
         </div>
