@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/weather/static/css/main.9121f7de.css",
-    "main.js": "/weather/static/js/main.72ff1620.js",
+    "main.js": "/weather/static/js/main.d04ed595.js",
     "static/js/787.13d76ca7.chunk.js": "/weather/static/js/787.13d76ca7.chunk.js",
     "static/media/busIcon2.png": "/weather/static/media/busIcon2.505664c05a86d874e7a2.png",
     "index.html": "/weather/index.html",
     "main.9121f7de.css.map": "/weather/static/css/main.9121f7de.css.map",
-    "main.72ff1620.js.map": "/weather/static/js/main.72ff1620.js.map",
+    "main.d04ed595.js.map": "/weather/static/js/main.d04ed595.js.map",
     "787.13d76ca7.chunk.js.map": "/weather/static/js/787.13d76ca7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.9121f7de.css",
-    "static/js/main.72ff1620.js"
+    "static/js/main.d04ed595.js"
   ]
 }
