@@ -52,7 +52,6 @@ export default function ResponsiveGauge({value}){
         return;
     }
     let newValue = value / 2;
-    console.log(newValue);
     return(
         <Gauge>
             <GaugeBody className="gaugebody">

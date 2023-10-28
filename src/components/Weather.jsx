@@ -16,16 +16,14 @@ const Div = styled.div`
     grid-template-rows: 30% 20% 1fr;
     grid-gap: 10px;
     box-sizing: border-box;
-    max-width: 800px;
+    width: 50vw;
     padding: 2%;
     background-image: linear-gradient(to right, rgb(0, 104, 156, 0.6) , rgb(0, 144, 196, 0.2));
-    border: 2px solid blue;
 
     .item1 {
         grid-row: 1;
         display: grid;
         grid-template-columns: 80% 20%;
-        ${'' /* border: 2px solid red; */}
     }
 
     
@@ -34,7 +32,6 @@ const Div = styled.div`
         grid-row: 2;
         display: grid;
         grid-template-rows: 25% 75%;
-        ${'' /* border: 2px solid yellow; */}
     }
 
  
@@ -58,7 +55,6 @@ const Div = styled.div`
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 10% 130px 130px;
         grid-gap: 10px;
-        ${'' /* border: 2px solid orange; */}
     }
 
    

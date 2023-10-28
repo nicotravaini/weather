@@ -1,7 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import Weather from './components/Weather';
-import ResponsiveGauge from './components/smallerComponents/ResponsiveGauge';
 import Transport from './components/transporte/Transport';
 
 function App() {
@@ -24,8 +23,9 @@ function App() {
     <div className="App">
       {loading && <h1>Loading...</h1>}
       {!loading && <Weather weatherdata={weatherData} />}
-    
+      
       <div className="Map">
+        {!loading && <Transport/>}
       </div>
     </div>
   );

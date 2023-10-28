@@ -21,7 +21,6 @@ const Div = styled.div`
 `
 
 export default function UvIndex ({uvindex}) {
-    console.log(uvindex)
     return (
         <Div>
             <h6>UV INDEX</h6>

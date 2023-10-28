@@ -53,7 +53,6 @@ const Div = styled.div`
 `
 
 export default function Precipitation({precipitation}) {
-    console.log(precipitation);
     let normalizedPoP = 72 - precipitation / 8.33;
 
     let precipitationText;
