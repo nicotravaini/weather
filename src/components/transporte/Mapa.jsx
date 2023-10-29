@@ -4,7 +4,6 @@ import L from 'leaflet';
 
 export default function Mapa({ transportdata }) {
     const position = [transportdata[0].latitude, transportdata[0].longitude];
-    console.log(position);
     const busIcon = L.icon({
         iconUrl: require("./img/busIcon2.png"),
         iconSize: [40, 40],

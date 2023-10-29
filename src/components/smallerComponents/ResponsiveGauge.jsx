@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Gauge = styled.div`
     width: 100%;
-    max-width: 250px;
+    max-width: 170px;
     font-family: 'Roboto', sans-serif;
     font-size: 32px;
     color: #004033;
@@ -24,7 +24,7 @@ const GaugeFill = styled.div`
         left: 0;
         width: inherit;
         height: 100%;
-        background: #009578;
+        background: rgb(0, 144, 180);
         transform-origin: center top;
         transform: rotate(0.25turn);
         transition: transform 0.2s ease-out;
@@ -45,6 +45,8 @@ const GaugeCover = styled.div`
         justify-content: center;
         padding-bottom: 25%;
         box-sizing: border-box;
+        color: rgb(0, 144, 180);
+        font-weight: bold;
 `
 
 export default function ResponsiveGauge({value}){

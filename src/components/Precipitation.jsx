@@ -7,7 +7,7 @@ const Div = styled.div`
     box-sizing: border-box;
     border: 2px solid none;
     border-radius: 10px;
-    background-color: rgba(250, 250, 250, 0.9);
+    background-color: rgb(250, 250, 250);
     color: rgb(180, 180, 180);
     padding: 10px;
 
@@ -35,10 +35,13 @@ const Div = styled.div`
     }
 
     .derecha {
-        margin-left: 85%;
+        grid-column: 2;
+        display: grid;
+        justify-items: end;
+        align-items: center;
     }
 
-    .barraGris {
+    ${'' /* .barraGris {
         position: fixed;
         right: 19.5%;
         top: 60%;
@@ -57,11 +60,21 @@ const Div = styled.div`
         border: 3px solid rgb(255, 110, 0, 0.6);
         border-radius: 50%;
         background-color: rgb(220, 200, 0);
+    } */}
+    .backBarra {
+        height: 100%;
+        width: 10px;
+        border: 2px solid none;
+        background-color: #b4c0be;
+    }
+    .barra {
+        width: 10px;
+        border: 2px solid none;
+        background-color: rgb(0, 144, 180);
     }
 `
 
 export default function Precipitation({precipitation}) {
-    let normalizedPoP = 72 - precipitation / 8.33;
 
     let precipitationText;
     if(precipitation >= 0 && precipitation <= 10){
@@ -82,11 +95,11 @@ export default function Precipitation({precipitation}) {
                 <div className="precipitation">{precipitation}%</div>
                 <div className="state">{precipitationText}</div>
             </div>
-            {/* <div className="derecha">
-                <div className="barraGris">
-                    <div className="puntoDeslizable" style={{top: normalizedPoP + "%"}}></div>
+            <div className="derecha">
+                <div className="backBarra">
+                    <div className="barra" style={{ height: precipitation }} />
                 </div>
-            </div> */}
+            </div>
         </Div>
     )
 }

@@ -45,8 +45,6 @@ export default function Transport() {
       });
   }
 
-  console.log(transportData);
-
   useEffect(() => {
     fetchData(routeShortNameDirectionToRouteId[selectedLine]);
     const interval = setTimeout(() => {

@@ -26,15 +26,11 @@ const Div = styled.div`
         grid-template-columns: 80% 20%;
     }
 
-    
-
     .item2 {
         grid-row: 2;
         display: grid;
         grid-template-rows: 25% 75%;
     }
-
- 
 
     .today {
         grid-row: 1;

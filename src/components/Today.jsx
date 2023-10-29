@@ -55,6 +55,7 @@ const Div = styled.div`
 `
 
 export default function Today({ value }) {
+    console.log(value["12am"])
     return (
         <Div>
             <div className="wrapper">

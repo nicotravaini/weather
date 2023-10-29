@@ -6,7 +6,7 @@ const Div = styled.div`
     box-sizing: border-box;
     border: 2px solid none;
     border-radius: 5px;
-    background-color: rgba(250, 250, 250, 0.9);
+    background-color: rgb(250, 250, 250);
     color: rgb(180, 180, 180);
     text-align: left;
     padding-left: 10px;
