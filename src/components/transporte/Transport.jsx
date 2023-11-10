@@ -29,42 +29,53 @@ export default function Transport() {
   const [transportData, setTransportData] = useState(dataTransporte);
   const [loading, setLoading] = useState(false);
 
-  const fetchData = (routeID) => {
-    setLoading(true);
+  const fetchData = (routeID, datatransporte) => {
     fetch(`https://datosabiertos-transporte-apis.buenosaires.gob.ar:443/colectivos/vehiclePositionsSimple?route_id=${routeID}&client_id=cb6b18c84b3b484d98018a791577af52&client_secret=3e3DB105Fbf642Bf88d5eeB8783EE1E6`)
       .then(response => {
-        if (!response.ok) throw Error(response.status);
-
-        return response;
-      }).then(respo => respo.json()
+        if (!response.ok) throw new Error("entro al response ok");
+        if (typeof response === 'undefined') throw new Error("Era undefined")
+        else return response;
+      }).then(respo => {
+        respo.json()
+        if (respo.lenght === 0) throw new Error("tiro lista vacia")
+      }
       ).then(data => {
-        setTransportData(data);
-        setLoading(false);
-      }).catch(ex => {
-        console.error(ex);
+        if (data != undefined) {
+          setTransportData(data);
+          setLoading(true);
+        } else if (data === undefined) {
+          setTransportData(datatransporte);
+        }
+        console.log("todo salio bien")
+      }).catch((ex) => {
+        console.log("entro al catch");
+        console.log(ex)
+        setLoading(true);
+        throw new Error;
       });
   }
-
+  console.log(transportData);
+  
   useEffect(() => {
-    fetchData(routeShortNameDirectionToRouteId[selectedLine]);
+    fetchData(routeShortNameDirectionToRouteId[selectedLine], dataTransporte);
     const interval = setTimeout(() => {
-      fetchData(routeShortNameDirectionToRouteId[selectedLine]);
+      fetchData(routeShortNameDirectionToRouteId[selectedLine], dataTransporte);
     }, 31000);
     return () => clearInterval(setTimeout);
   }, []);
 
   useEffect(() => {
-    fetchData(routeShortNameDirectionToRouteId[selectedLine]);
+    fetchData(routeShortNameDirectionToRouteId[selectedLine], dataTransporte);
   }, [selectedLine]);
 
   const routeShortNameDirectionToRouteId = {
+    "153A a B° Nuevo": "1468",
     "12A a Barracas": "1745",
     "159C L (Roja) Correo Central": "839",
     "26A a B° Rivadavia": "2029",
     "133D Est. Transf. Vte. López": "1724",
     "133A Barracas": "1719",
     "148A 2 - Pque. Avellaneda x Guillermo Marconi": "1980",
-    "153A a B° Nuevo": "1468",
     "253A a Liniers": "1464",
     "253A a LIBERTAD": "1465",
     "321A a Est. CASTELAR": "1467",
@@ -72,25 +83,26 @@ export default function Transport() {
   }
 
   return (
-    <div>
-      <Header>
+    <>
+      {loading && <h1>Loading...</h1>}
+      {loading && <Header>
         <label id="label" for={"LineasDeColectivos"}>Seleccione una linea de colectivo:</label>
         <select id="LineasDeColectivos" value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
+          <option value={"153A a B° Nuevo"}>153A a B° Nuevo</option>
           <option value={"12A a Barracas"}>12A a Barracas</option>
           <option value={"159C L (Roja) Correo Central"}>159C L (Roja) Correo Central</option>
           <option value={"26A a B° Rivadavia"}>26A a B° Rivadavia</option>
           <option value={"133D Est. Transf. Vte. López"}>133D Est. Transf. Vte. López</option>
           <option value={"133A Barracas"}>133A Barracas</option>
           <option value={"148A 2 - Pque. Avellaneda x Guillermo Marconi"}>148A 2 - Pque. Avellaneda x Guillermo Marconi</option>
-          <option value={"153A a B° Nuevo"}>153A a B° Nuevo</option>
           <option value={"253A a Liniers"}>253A a Liniers</option>
           <option value={"253A a LIBERTAD"}>253A a LIBERTAD</option>
           <option value={"321A a Est. CASTELAR"}>321A a Est. CASTELAR</option>
           <option value={"321A a LIBERTAD"}>321A a LIBERTAD</option>
         </select>
-      </Header>
-      <Mapa transportdata={transportData} />
-      <Footer/>
-    </div>
+      </Header>}
+      {loading && <Mapa transportdata={transportData} />}
+      <Footer />
+    </>
   )
 }

@@ -1,4 +1,9 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+// const spinner = keyframes`
+// to{
+//     transform: rotate(${prop}deg)0.25 turn;
+// }`
 
 const Gauge = styled.div`
     width: 100%;
@@ -15,7 +20,7 @@ const GaugeBody = styled.div`
         position: relative;
         border-top-left-radius: 100% 200%;
         border-top-right-radius: 100% 200%;
-        overflow: hidden;
+        ${'' /* overflow: hidden; */}
 `
     
 const GaugeFill = styled.div`
@@ -26,7 +31,7 @@ const GaugeFill = styled.div`
         height: 100%;
         background: rgb(0, 144, 180);
         transform-origin: center top;
-        transform: rotate(0.25turn);
+        transform: ;
         transition: transform 0.2s ease-out;
 `
     
@@ -53,11 +58,11 @@ export default function ResponsiveGauge({value}){
     if(value < 0 || value > 10){
         return;
     }
-    let newValue = value / 2;
+    let newValue = value * 10;
     return(
         <Gauge>
             <GaugeBody className="gaugebody">
-                <GaugeFill className="gaugefill" style={{transform: newValue}}></GaugeFill>
+                <GaugeFill className="gaugefill" rotates={newValue + "deg"}></GaugeFill>
                 <GaugeCover className="gaugecover">{value}</GaugeCover>
             </GaugeBody>
         </Gauge>

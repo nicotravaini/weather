@@ -6,6 +6,7 @@ import Transport from './components/transporte/Transport';
 function App() {
   const [weatherData, setWeatherData] = useState(null)
   const [loading, setLoading] = useState(true);
+  const [isDay, setIsDay] = useState(1);
 
   useEffect(() => {
     setLoading(true);
@@ -14,18 +15,19 @@ function App() {
       ).then(data => {
         setWeatherData(data);
         setLoading(false);
+        setIsDay(data["current"]["is_day"])
       }).catch(ex => {
         console.error(ex);
       })
   }, [])
-
+  
   return (
-    <div className="App">
+    <div className={`App ${isDay === 0 ? "dark" : ""}`}>
       {loading && <h1>Loading...</h1>}
-      {!loading && <Weather weatherdata={weatherData} />}
-      
+      {!loading && <Weather weatherdata={weatherData}/>}
+
       <div className="Map">
-        {!loading && <Transport/>}
+        {!loading && <Transport />}
       </div>
     </div>
   );

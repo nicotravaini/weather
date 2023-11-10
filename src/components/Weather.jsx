@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import HighLow from "./HighLow";
 import Humidity from "./Humidity";
 import SunriseSunset from "./SunriseSunset";
@@ -7,9 +7,16 @@ import Today from "./Today";
 import UvIndex from "./UvIndex";
 import Visibility from "./Visibility";
 import WindStatus from "./WindStatus";
-import styled from 'styled-components';
+import styled, { ThemeContext, ThemeProvider } from 'styled-components';
 import Precipitation from './Precipitation';
 
+// const baseTheme = {
+
+// }
+
+// const darkTheme = {
+//     background: linear-gradient(right, rgb(0, 54, 106, 0.6) , rgb(0, 94, 146, 0.2))
+// }
 
 const Div = styled.div`
     display: grid;
@@ -18,7 +25,14 @@ const Div = styled.div`
     box-sizing: border-box;
     width: 50vw;
     padding: 2%;
-    background-image: linear-gradient(to right, rgb(0, 104, 156, 0.6) , rgb(0, 144, 196, 0.2));
+
+    .light{
+        background-image: linear-gradient(to right, rgb(0, 104, 156, 0.6) , rgb(0, 144, 196, 0.2));
+    }
+
+    .dark{
+        background-image: linear-gradient(to right, rgb(0, 54, 106, 0.6) , rgb(0, 94, 146, 0.2));
+    }
 
     .item1 {
         grid-row: 1;
@@ -71,6 +85,7 @@ export default function Weather({ weatherdata }) {
     const [highLights, setHighLights] = useState({ "uvIndex": 0, "windStatus": 0, "sunrise": 0, "sunset": 0, "humidity": 0, "visibility": 0, "precipitation": 0, "airquality": 0 });
     const [highLow, setHighLow] = useState({ "high": 0, "low": 0 });
     const [temperature, setTemperature] = useState({ "date": "", "temperature": "" });
+    
 
     useEffect(() => {
         setToday({
@@ -105,7 +120,7 @@ export default function Weather({ weatherdata }) {
 
     return (
         <Div>
-            <div className='item1'>
+            <div className={'item1'}>
                 <Temperature date={temperature["date"]} temperature={temperature["temperature"]} />
                 <HighLow high={highLow["high"]} low={highLow["low"]} />
             </div>

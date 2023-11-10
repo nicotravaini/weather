@@ -1,6 +1,11 @@
 .App {
   display: flex;
   flex-direction: row;
+  background-image: repeating-linear-gradient(to right, rgb(0, 104, 156, 0.6) , rgb(0, 144, 196, 0.2), rgb(0, 104, 156, 0.6));
+}
+
+.dark{
+  background-image: linear-gradient(to right, rgb(0, 54, 96), rgba(25, 42, 51, 0.854), rgb(0, 54, 96));
 }
 
 .leaflet-container {
