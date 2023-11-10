@@ -10,5 +10,7 @@
 
 .leaflet-container {
   width: 50vw; 
-  height: 85vh;
+  height: 83vh;
+  border-radius: 10px;
+  margin-right: 5vh; 
 }

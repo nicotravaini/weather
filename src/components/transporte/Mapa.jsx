@@ -3,7 +3,7 @@ import L from 'leaflet';
 
 
 export default function Mapa({ transportdata }) {
-    const position = [transportdata && transportdata[0] && transportdata[0].latitude, transportdata && transportdata[0] && transportdata[0].longitude];
+    const position = [transportdata[0].latitude, transportdata[0].longitude];
     const busIcon = L.icon({
         iconUrl: require("./img/busIcon2.png"),
         iconSize: [40, 40],
@@ -16,11 +16,11 @@ export default function Mapa({ transportdata }) {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
             <Marker
-                key={transportdata && transportdata[0] && transportdata[0]["id"]}
+                key={transportdata[0]["id"]}
                 position={position}
                 icon={busIcon}>
                 <Popup>
-                    Empresa {transportdata?.[0]["agency_name"]} <br /> Linea {transportdata?.[0]["route_short_name"]}
+                    Empresa {transportdata[0]["agency_name"]} <br /> Linea {transportdata[0]["route_short_name"]}
                 </Popup>
             </Marker>
         </MapContainer>

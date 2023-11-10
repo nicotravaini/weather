@@ -5,7 +5,6 @@ import dataTransporte from "./dataTransporte.json"
 
 const Header = styled.div`
     display: grid;
-    background-image: linear-gradient(to right, rgb(0, 144, 196, 0.2), rgb(0, 104, 156, 0.6));
     height: 10vh;
     justify-content: center;
     align-items: center;
@@ -21,9 +20,9 @@ const Header = styled.div`
     }
 `
 const Footer = styled.footer`
-    height: 5vh; 
-    background-image: linear-gradient(to right, rgb(0, 144, 196, 0.2), rgb(0, 104, 156, 0.6));
+    height: 5vh;
 `
+
 export default function Transport() {
   const [selectedLine, setSelectedLine] = useState("12A a Barracas");
   const [transportData, setTransportData] = useState(dataTransporte);
@@ -40,13 +39,15 @@ export default function Transport() {
         if (respo.lenght === 0) throw new Error("tiro lista vacia")
       }
       ).then(data => {
-        if (data != undefined) {
+        if (data !== undefined) {
           setTransportData(data);
           setLoading(true);
         } else if (data === undefined) {
           setTransportData(datatransporte);
+          setLoading(false);
         }
         console.log("todo salio bien")
+        console.log(transportData);
       }).catch((ex) => {
         console.log("entro al catch");
         console.log(ex)
@@ -55,7 +56,7 @@ export default function Transport() {
       });
   }
   console.log(transportData);
-  
+
   useEffect(() => {
     fetchData(routeShortNameDirectionToRouteId[selectedLine], dataTransporte);
     const interval = setTimeout(() => {
@@ -85,7 +86,7 @@ export default function Transport() {
   return (
     <>
       {loading && <h1>Loading...</h1>}
-      {loading && <Header>
+      {!loading && <Header>
         <label id="label" for={"LineasDeColectivos"}>Seleccione una linea de colectivo:</label>
         <select id="LineasDeColectivos" value={selectedLine} onChange={(e) => setSelectedLine(e.target.value)}>
           <option value={"153A a B° Nuevo"}>153A a B° Nuevo</option>
@@ -101,7 +102,7 @@ export default function Transport() {
           <option value={"321A a LIBERTAD"}>321A a LIBERTAD</option>
         </select>
       </Header>}
-      {loading && <Mapa transportdata={transportData} />}
+      {!loading && <Mapa transportdata={transportData} />}
       <Footer />
     </>
   )
