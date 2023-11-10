@@ -20,7 +20,7 @@ const GaugeBody = styled.div`
         position: relative;
         border-top-left-radius: 100% 200%;
         border-top-right-radius: 100% 200%;
-        ${'' /* overflow: hidden; */}
+        overflow: hidden;
 `
     
 const GaugeFill = styled.div`
@@ -31,7 +31,7 @@ const GaugeFill = styled.div`
         height: 100%;
         background: rgb(0, 144, 180);
         transform-origin: center top;
-        transform: ;
+        transform: rotate(0.25turn);
         transition: transform 0.2s ease-out;
 `
     
@@ -55,16 +55,27 @@ const GaugeCover = styled.div`
 `
 
 export default function ResponsiveGauge({value}){
-    if(value < 0 || value > 10){
-        return;
+    const inMin = 0;
+    const inMax = 10;
+    const outMin = 0;
+    const outMax = 18;
+    function normalize(val, inmin, inmax, outmin, outmax) { 
+        return (val - inmin) * (outmax - outmin) / (inmax - inmin) + outmin;
     }
-    let newValue = value * 10;
+    
+    const newValue = (normalize(value, inMin, inMax, outMin, outMax)) * 10;
+    
+    const style = {
+        transform: `rotate(${newValue}deg)`
+    }
     return(
         <Gauge>
             <GaugeBody className="gaugebody">
-                <GaugeFill className="gaugefill" rotates={newValue + "deg"}></GaugeFill>
+                <GaugeFill className="gaugefill" style={style}></GaugeFill>
                 <GaugeCover className="gaugecover">{value}</GaugeCover>
             </GaugeBody>
         </Gauge>
     )
 }
+
+// uvindex min 0 = 0deg max 10 = 18deg
